@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Percentage Image Maper</title>
+	
+	<style type="text/css">
+		canvas {
+			border: 1px solid black;
+			background-color: #EFEFEF;
+			margin: 2em 0;
+			outline: none;
+		}
+		input[type=file],
+		label {
+			display: block;
+		}
+		#container {
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: white;
+			font-size: 14px;
+			width: 1200px;
+			margin: 0 auto;
+		}
+		h1 {
+			margin: 1em 0;
+		}
+		table {
+			display: inline-block;
+			padding: 1em;
+			margin: 0 2em 2em 0;
+			border: 1px solid black;
+		}
+		th, td {
+			padding: 5px;
+		}
+		.inline {
+			display: inline-block;
+			vertical-align:top;
+			max-width: 50%;
+		}
+	</style>
+	
+	<script type="text/javascript" src="boxes2.js"></script>
+</head>
+<body>
+	<div id="container">
+		<h1>Percentage Image Maper</h1>
+		
+		<div class="inline">
+			<p><strong>Instructions</strong></p>
+			<ol>
+				<li>Select an image with the file picker below</li>
+				<li>Double-click anywhere on the image to create a map area</li>
+				<li>Click on the created map area to select it</li>
+				<li>Use the square handles to resize or move the map area</li>
+				<li>Multiple map areas can be added (colors will repeat after 6)</li>
+				<li>Tables will dynamically generate below for each map area</li>
+				<li>You can right-click the canvas to save the image with mapped areas</li>
+			</ol>
+		</div>
+		
+		<div class="inline">
+			<p><strong>Limitations</strong></p>
+			<ul>
+				<li>Use Google Chrome for best performace<br>
+					(Firefox and Safari should work, IE may not)</li>
+				<li>Only 1 map area can be selected, moved, or resized at a time</li>
+			</ul>
+		</div>
+		
+		<input type='file' onChange="readFile(this)" accept="image/*" />
+		
+		<label>Default Width: <input type='text' id="dwidth" maxlength="4" size="1" placeholder="200">px</label>
+		<label>Default Height: <input type='text' id="dheight" maxlength="4" size="1" placeholder="30">px</label>
+		
+		<canvas id="canvas2" height="465" width="1160">
+			If this text is displayed, your browser does not support HTML5 Canvas.
+		</canvas>
+		
+		<div id="info"></div>
+	</div>
+</body>
+</html>
