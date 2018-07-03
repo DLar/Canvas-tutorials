@@ -9,6 +9,7 @@
 			background-color: #EFEFEF;
 			margin: 2em 0;
 			outline: none;
+			display: block;
 		}
 		input[type=file],
 		label {
@@ -25,13 +26,13 @@
 			margin: 1em 0;
 		}
 		table {
-			display: inline-block;
-			padding: 1em;
-			margin: 0 2em 2em 0;
-			border: 1px solid black;
+			border-collapse: collapse;
+			display: block;
+			margin: 2em 0;
 		}
 		th, td {
-			padding: 5px;
+			padding: 15px;
+			border: 1px solid black;
 		}
 		.inline {
 			display: inline-block;
@@ -68,16 +69,14 @@
 			</ul>
 		</div>
 		
-		<input type='file' onChange="readFile(this)" accept="image/*" />
-		
-		<label>Default Width: <input type='text' id="dwidth" maxlength="4" size="1" placeholder="200">px</label>
-		<label>Default Height: <input type='text' id="dheight" maxlength="4" size="1" placeholder="30">px</label>
+		<!--<input type='file' onChange="readFile(this)" accept="image/*" />-->
+		<input type="file" id="file" accept="image/*" />
 		
 		<canvas id="canvas2" height="465" width="1160">
 			If this text is displayed, your browser does not support HTML5 Canvas.
 		</canvas>
 		
-		<div id="info"></div>
+		<table id="info"></table>
 	</div>
 </body>
 </html>
