@@ -29,7 +29,7 @@ var preDel = 0;
 
 // Hold image information
 var IMG;
-var MAXWIDTH = 1160;
+var MAXWIDTH = 1200;
 
 // Hold canvas information
 var canvas;
@@ -636,20 +636,19 @@ function addTable(color) {
   
   var row = document.createElement('tr');
   row.setAttribute( 'style', 'background-color: ' + color );
-  row.innerHTML = '<th>Link ' + (l+1) + '</th>' +
-    '<td>top: <span id="top' + l + '"></span>; right: <span id="right' + l + '"></span>; bottom: <span id="bottom' + l + '"></span>; left: <span id="left' + l + '"></span>;</td>';
+  row.innerHTML = '<td id="top' + l + '"></td><td id="left' + l + '"></td><td id="width' + l + '"></td><td id="height' + l + '"></td>';
   info.appendChild(row);
 }
 
 function updateTable(index) {
   var cellRef = document.getElementById('top' + index);
-  cellRef.innerHTML = (Math.round(boxes[index].y / HEIGHT * 1000) / 10) + '%';
-  cellRef = document.getElementById('right' + index);
-  cellRef.innerHTML = (Math.round((WIDTH - boxes[index].x - boxes[index].w) / WIDTH * 1000) / 10) + '%';
-  cellRef = document.getElementById('bottom' + index);
-  cellRef.innerHTML = (Math.round((HEIGHT - boxes[index].y - boxes[index].h) / HEIGHT * 1000) / 10) + '%';
+  cellRef.innerHTML = (Math.round(boxes[index].y / HEIGHT * 1000) / 10);
   cellRef = document.getElementById('left' + index);
-  cellRef.innerHTML = (Math.round(boxes[index].x / WIDTH * 1000) / 10) + '%';
+  cellRef.innerHTML = (Math.round(boxes[index].x / WIDTH * 1000) / 10);
+  cellRef = document.getElementById('height' + index);
+  cellRef.innerHTML = (Math.round(boxes[index].h / HEIGHT * 1000) / 10);
+  cellRef = document.getElementById('width' + index);
+  cellRef.innerHTML = (Math.round(boxes[index].w / WIDTH * 1000) / 10);
 }
 
 function readFile(file) {
@@ -676,8 +675,18 @@ function readFile(file) {
 window.onload = function() {
   canvas = document.getElementById('canvas2');
   var file = document.getElementById('file');
+  var url = document.getElementById('url');
   file.onchange = function() {
     readFile(file.files[0]);
+  };
+  url.onblur = function(e) {
+	IMG = new Image();
+	
+	IMG.onload = function() {
+      init();
+    };
+	
+	IMG.src = e.target.value;
   };
   canvas.ondragover = function(e) {
     e.preventDefault();

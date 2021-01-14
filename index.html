@@ -70,13 +70,24 @@
 		</div>
 		
 		<!--<input type='file' onChange="readFile(this)" accept="image/*" />-->
-		<input type="file" id="file" accept="image/*" />
+		<input type="file" id="file" accept="image/*" /><br>
+		<label>URL: <input type="url" id="url" /></label>
 		
 		<canvas id="canvas2" height="465" width="1160">
 			If this text is displayed, your browser does not support HTML5 Canvas.
 		</canvas>
 		
-		<table id="info"></table>
+		<table>
+		  <thead>
+			<tr>
+			  <th>Top</th>
+			  <th>Left</th>
+			  <th>Width</th>
+			  <th>Height</th>
+			</tr>
+		  </thead>
+		<tbody id="info"></tbody>
+		</table>
 	</div>
 </body>
 </html>
